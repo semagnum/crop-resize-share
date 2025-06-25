@@ -1,0 +1,89 @@
+html {
+    min-height: 100%;
+    background-color: #000;
+    background: linear-gradient(180deg, #000000 20%, #121212 100%);
+}
+
+body {
+    font-family: Arial, sans-serif;
+    font-size: 24px;
+    text-align: center;
+
+    overflow-x: hidden;
+
+    color: white;
+}
+
+a {
+    color: #3dbeff;
+}
+
+h2,
+p {
+    text-align: center;
+}
+
+#uploadImage {
+    margin-top: 12px;
+    margin-bottom: 48px;
+}
+
+#originalImage {
+    display: none;
+}
+
+.canvasContainer {
+    width: 100%;
+    text-align: center;
+}
+
+#preview {
+    display: inline;
+    max-width: 80vw;
+    max-height: 80vh;
+    width: auto;
+    height: auto;
+}
+
+#error {
+    color: white;
+    background-color: #ff0000cc;
+    border-radius: 12px;
+}
+
+.controls {
+    margin-top: 10px;
+}
+
+#dimensions {
+    margin-bottom: 0;
+}
+
+button,
+label,
+input,
+select {
+    font-size: 24px;
+    text-align: center;
+}
+
+input[type="file" i] {
+    width: 145px;
+    color: transparent;
+    box-sizing: border-box;
+}
+
+@media screen and (min-width: 769px) {
+    br.mobile {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    button,
+    label,
+    input,
+    select {
+        margin-top: 12px;
+    }
+}

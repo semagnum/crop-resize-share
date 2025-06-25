@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta content="IE=edge" http-equiv="X-UA-Compatible">
+  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+
+  <meta name="author" content="Spencer Magnusson">
+
+  <!-- Touch Icons - iOS and Android 2.1+ 152x152 pixels in size. -->
+  <link rel="apple-touch-icon-precomposed" href="apple-touch-icon.png">
+  <!-- Firefox, Chrome, Safari, IE 11+ and Opera. 96x96 pixels in size. -->
+  <link rel="icon" href="/favicon.ico">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="me" href="https://graphics.social/@smagnusson">
+
+  <title>Crop, Resize & Share</title>
+
+  <link rel="stylesheet" href="index.css">
+  <script src="manifest.js" defer></script>
+</head>
+
+<body>
+  <h2>Copy, Resize, Share</h2>
+  <p>Upload or paste images. Crop, resize, then share. No server-side processing. No data sharing.</p>
+  <div id="uploadImage">
+    <p>
+      <input type="file" id="inputImage" accept="image/*" onchange="onImageUpload(event)">
+      or
+      <input type="text" id="inputImageUrl" placeholder="Image URL" onchange="onImageUrlUpload(event)">
+    </p>
+  </div>
+  <div id="controls" style="display: none;">
+    <p>
+      Crop:
+      <br class="mobile">
+      <input type="number" id="cropTop" value="" onblur="updateCanvas(event)" placeholder="Top">
+      <input type="number" id="cropBottom" value="" onblur="updateCanvas(event)" placeholder="Bottom">
+      <input type="number" id="cropLeft" value="" onblur="updateCanvas(event)" placeholder="Left">
+      <input type="number" id="cropRight" value="" onblur="updateCanvas(event)" placeholder="Right">
+    </p>
+    <p>
+      Resize:
+      <br class="mobile">
+      <input type="number" id="resizeWidth" value="" onblur="updateCanvas(event)" placeholder="Width">
+      <input type="number" id="resizeHeight" value="" onblur="updateCanvas(event)" placeholder="Height">
+    </p>
+  </div>
+  <img id="originalImage"/>
+  <p id="error"></p>
+  <p id="dimensions"></p>
+  <div id="canvasContainer">
+    <image id="preview" style="display: none;"></canvas>
+  </div>
+  <script src="index.js"></script>
+</body>
+<footer>
+  <p>
+    Made by <a href="https://spencermagnusson.com">Spencer Magnusson</a>.
+    <a href="https://github.com/semagnum/crop-resize-share">GitHub</a>
+  </p>
+</footer>
+</html>

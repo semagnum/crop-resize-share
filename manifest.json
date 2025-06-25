@@ -1,0 +1,22 @@
+{
+    "short_name": "Crop, Resize, Share",
+    "name": "Crop, Resize, Share",
+    "icons": [
+        {
+            "src": "/crop-resize-share/assets/android-chrome-512x512.png",
+            "type": "image/jpg",
+            "sizes": "512x512"
+        },
+        {
+            "src": "/crop-resize-share/assets/android-chrome-512x512.png",
+            "type": "image/jpg",
+            "sizes": "192x192"
+        }
+    ],
+    "start_url": "/crop-resize-share/",
+    "background_color": "#121212",
+    "display": "fullscreen",
+    "scope": "/crop-resize-share/",
+    "theme_color": "#121212",
+    "description": "Upload or paste, crop, resize, share"
+}
