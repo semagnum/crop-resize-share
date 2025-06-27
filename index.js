@@ -26,6 +26,7 @@ function updateImages(url) {
     document.getElementById('resizeWidth').value = '';
     document.getElementById('resizeHeight').value = '';
 
+    originalImage.setAttribute('crossorigin', 'anonymous');
     originalImage.src = url;
     originalImage.onload = () => {
         updateCanvas();
@@ -44,6 +45,11 @@ function onImageUpload(e) {
         url = URL.createObjectURL(file);
         updateImages(url);
     }
+}
+
+function onImageUrlUpload(e) {
+    const url = e.target.value;
+    updateImages(url);
 }
 
 function updateCanvas() {
@@ -75,7 +81,7 @@ function updateCanvas() {
     if (errorMessage.style.display !== 'block') {
         resize(canvas);
     }
-    preview.src = canvas.toDataURL('image/png');
+    preview.src = canvas.toDataURL();
     preview.style.display = 'inline';
     document.getElementById('dimensions').innerText = canvas.width + "x" + canvas.height;
 }

@@ -28,7 +28,7 @@
     <p>
       <input type="file" id="inputImage" accept="image/*" onchange="onImageUpload(event)">
       or
-      <input type="text" id="inputImageUrl" placeholder="Image URL" onchange="onImageUrlUpload(event)">
+      <input type="text" id="inputImageUrl" placeholder="Image URL" onblur="onImageUrlUpload(event)">
     </p>
   </div>
   <div id="controls" style="display: none;">
