@@ -4,6 +4,20 @@ const shareButton = document.getElementById('share');
 
 const errorMessage = document.getElementById('error');
 
+
+function displayError(message) {
+    errorMessage.style.display = 'block';
+    errorMessage.innerText = message;
+}
+
+window.onerror = function(message, url, line, col, errorObj) {
+    displayError(`${message}\n${url}, ${line}:${col}`);
+};
+
+originalImage.onError = () => {
+    displayError('Image failed to load');
+};
+
 document.onpaste = function (event) {
     var items = (event.clipboardData || event.originalEvent.clipboardData).items;
     for (var index in items) {
@@ -45,6 +59,9 @@ function onImageUpload(e) {
         url = URL.createObjectURL(file);
         updateImages(url);
     }
+    else {
+        displayError('Invalid file, try pasting image or use a different file format');
+    }
 }
 
 function onImageUrlUpload(e) {
@@ -62,8 +79,7 @@ function updateCanvas() {
     const newHeight = originalImage.height - cropTop - cropBottom;
 
     if (newWidth < 1 || newHeight < 1 || cropLeft < 0 || cropRight < 0 || cropTop < 0 || cropBottom < 0) {
-        errorMessage.style.display = 'block';
-        errorMessage.innerText = 'Invalid resize dimensions.';
+        displayError('Invalid resize dimensions.');
         return;
     }
     else {
