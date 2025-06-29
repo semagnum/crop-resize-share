@@ -22,7 +22,7 @@ document.onpaste = function (event) {
     var items = (event.clipboardData || event.originalEvent.clipboardData).items;
     for (var index in items) {
         var item = items[index];
-        if (item.kind === 'file') {
+        if (item.kind === 'file' && item.type.indexOf('image') !== -1) {
             const blob = item.getAsFile();
             const url = URL.createObjectURL(blob);
             updateImages(url);
@@ -55,7 +55,7 @@ function updateImages(url) {
 
 function onImageUpload(e) {
     const file = e.target.files[0];
-    if (file) {
+    if (file && file.type.indexOf('image') !== -1) {
         url = URL.createObjectURL(file);
         updateImages(url);
     }
