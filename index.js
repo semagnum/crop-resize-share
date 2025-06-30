@@ -4,13 +4,33 @@ const shareButton = document.getElementById('share');
 
 const errorMessage = document.getElementById('error');
 
+if ('launchQueue' in window && 'files' in LaunchParams.prototype) {
+    launchQueue.setConsumer(async (launchParams) => {
+        if (!launchParams.files.length) return;
+
+        const fileHandle = launchParams.files[0];
+        const file = await fileHandle.getFile();
+        const reader = new FileReader();
+
+        reader.onload = () => {
+            const dataURL = reader.result;
+            if (dataURL) {
+                updateImages(dataURL);
+            } else {
+                displayError('Shared image not found');
+            }
+        };
+
+        reader.readAsDataURL(file);
+    });
+}
 
 function displayError(message) {
     errorMessage.style.display = 'block';
     errorMessage.innerText = message;
 }
 
-window.onerror = function(message, url, line, col, errorObj) {
+window.onerror = function (message, url, line, col, errorObj) {
     displayError(`${message}\n${url}, ${line}:${col}`);
 };
 
