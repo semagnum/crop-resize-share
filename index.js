@@ -40,7 +40,16 @@ function updateImages(url) {
     document.getElementById('resizeWidth').value = '';
     document.getElementById('resizeHeight').value = '';
 
+    // adds crossorigin and random query string to CORS errors and cacheing issues
     originalImage.setAttribute('crossorigin', 'anonymous');
+    if (url.indexOf('?') === -1) {
+        url += '?';
+    }
+    else {
+        url += '&';
+    }
+    url += 'v=' + Date.now();
+
     originalImage.src = url;
     originalImage.onload = () => {
         updateCanvas();
