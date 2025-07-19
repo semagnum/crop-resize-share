@@ -74,9 +74,7 @@ function onImageUpload(e) {
 }
 
 function onImageUrlUpload(e) {
-    const url = e.target.value;
-    //trim url
-    url = url.trim();
+    const url = e.target.value.trim();
     if (url === '') return;
     updateImages(url);
 }
